@@ -12,11 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
     - name: Set up JDK 11
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v3
       with:
         java-version: '11'
         distribution: 'temurin'
@@ -29,9 +28,17 @@ jobs:
       run: ./gradlew assembleDebug
 
     - name: Upload APK
-      if: success()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: app-debug
         path: app/build/outputs/apk/debug/app-debug.apk
-        retention-days: 7
+
+    - name: Create Release
+      if: success()
+      uses: softprops/action-gh-release@v1
+      with:
+        files: app/build/outputs/apk/debug/app-debug.apk
+        tag_name: build-${{ github.run_number }}
+        body: "CyberSecurity News App - Build ${{ github.run_number }}"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

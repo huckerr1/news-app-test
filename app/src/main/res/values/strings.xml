@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cyber Security News</string>
+    <string name="loading">Loading news...</string>
+    <string name="error">Error loading news</string>
+    <string name="retry">Retry</string>
+    <string name="no_news">No news available</string>
+    <string name="read_more">Read More</string>
+    <string name="source">Source:</string>
+    <string name="published">Published:</string>
+</resources>
