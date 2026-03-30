@@ -12,11 +12,6 @@ local.properties
 *.ipr
 .DS_Store
 
-# Gradle wrapper
-gradle/
-gradlew
-gradlew.bat
-
 # User-specific files
 *.jks
 *.class
